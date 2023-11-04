@@ -1,23 +1,22 @@
-
 import React, { useState } from "react";
-import { authenticate } from "./Auth"; // Impor fungsi autentikasi
+import { authenticate } from "./Auth";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  const handleLogin = () => {
-    // Panggil fungsi autentikasi dari auth.js
-    const isAuthenticated = authenticate(username, password);
-
-    if (isAuthenticated) {
-      // Jika autentikasi berhasil, atur isLoggedIn menjadi true
-      setIsLoggedIn(true);
-    } else {
-      // Jika autentikasi gagal, tampilkan pesan kesalahan atau lakukan tindakan yang sesuai
-      alert("Username atau password salah. Silakan coba lagi.");
-    }
+  const [value,setValue] = useState({
+    username: "",
+    password: ""
+  })
+  const navigate = useNavigate()
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // {
+  //   username: "david_r",
+  //   password: "3478*#54"
+  // } 
+  const handleLogin = async() => {
+    const isAuthenticated = await authenticate(value);
+    if (isAuthenticated) return navigate('/')
+    alert("Username atau password salah. Silakan coba lagi.");
   };
 
   return (
@@ -32,8 +31,8 @@ const Login = () => {
             type="text"
             id="username"
             name="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={value.username}
+            onChange={(e) => setValue({...value, username: e.target.value})}
             className="mt-1 p-2 w-full border rounded"
           />
         </div>
@@ -45,8 +44,8 @@ const Login = () => {
             type="password"
             id="password"
             name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={value.password}
+            onChange={(e) => setValue({...value,password: e.target.value})}
             className="mt-1 p-2 w-full border rounded"
           />
         </div>

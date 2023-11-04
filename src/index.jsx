@@ -5,15 +5,12 @@ import { Provider } from 'react-redux'
 import App from './App'
 import GlobalStyle from './theme/GlobalStyle'
 import Theme from './theme/Theme'
-import { store } from './state/store/store'
 
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={Theme}>
       <GlobalStyle />
-      <Provider store={store}>
-        <App />
-      </Provider>
+      <App />
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
