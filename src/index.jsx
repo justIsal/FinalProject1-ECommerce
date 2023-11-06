@@ -5,6 +5,7 @@ import { Provider } from 'react-redux'
 import App from './App'
 import GlobalStyle from './theme/GlobalStyle'
 import Theme from './theme/Theme'
+// import "./tailwind.css"; 
 
 ReactDOM.render(
   <React.StrictMode>

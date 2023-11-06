@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
+.product-details {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+  }
+  
+  
+  .product-info {
+    max-width: 400px;
+  }
+  
+  .product-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .product-description {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #000000;
+    text-align: justify;
+  }
+  
+  .product-id {
+    font-size: 30px;
+    color: #888;
+    margin-bottom: 10px;
+  }
+  
+  .add-to-cart-button {
+    background-color: #556f56;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 5px; /* Tambahkan border-radius untuk membuat sudut tombol terlihat lebih halus */
+    transition: all 0.3s; /* Gunakan transition untuk efek perubahan lambat */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Tambahkan efek shadow untuk kedalaman tombol */
+  }
+  
+  .add-to-cart-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); /* Efek zoom in saat tombol dihover */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Efek shadow yang lebih dalam saat tombol dihover */
+  }
+  
