@@ -4,6 +4,7 @@ import { isLogin } from "../auth/Auth";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../state/actions";
 import { useNavigate } from "react-router-dom";
+import "./DetailProduct.css";
 
 
 const DetailProduct = ()=> {
@@ -18,13 +19,18 @@ const DetailProduct = ()=> {
     },[product])
     console.log(data);
     return(
-        <>
+        
+        <div className="product-details">
+             <div className="product-info">
             <img src={data.image} style={{width: "200px"}} alt="" />
-            <p>{data.id}</p>
-            <p>{data.title}</p>
-            <p>{data.description}</p>
-            <button onClick={() => isLogin() ? dispatch(addToCart(data)) : navigate('/login')}>add to cart</button>
-        </>
+            <p className="product-id" >{data.id}</p>
+            <p className="product-title">{data.title}</p>
+            <p className="product-description">{data.description}</p>
+            <button 
+            className="add-to-cart-button"
+            onClick={() => isLogin() ? dispatch(addToCart(data)) : navigate('/login')}>add to cart</button>
+            </div>
+       </div>
     )
 }
-export default DetailProduct
+export default DetailProduct;
