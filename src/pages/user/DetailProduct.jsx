@@ -23,6 +23,7 @@ const DetailProduct = ()=> {
             <p>{data.id}</p>
             <p>{data.title}</p>
             <p>{data.description}</p>
+            <p>{data.stock}</p>
             <button onClick={() => isLogin() ? dispatch(addToCart(data)) : navigate('/login')}>add to cart</button>
         </>
     )
