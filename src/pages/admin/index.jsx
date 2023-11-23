@@ -1,10 +1,12 @@
+import { useSelector } from "react-redux"
 import HeaderAdmin from "../../components/HeaderAdmin"
+import Table from "../../components/Tables/TableUpdate";
 
 const Admin = ()=>{
     return (
         <>
             <HeaderAdmin />
-            PAGE ADMIN
+            <Table/>
         </>
       )
 }

@@ -6,11 +6,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import Button from './elements/Button'
 import routes from '../constants/routes.json'
 import { openCart } from '../state/actions'
+import { isLoginAdmin, logoutAdmin } from '../pages/auth/Auth'
 
 const HeaderAdmin = () => {
   const cart = useSelector((state) => state.cart)
   const dispatch = useDispatch()
-
+  const isLogin = isLoginAdmin()
   const sumQuantity = () => {
     return cart.reduce((quantity, cartItem) => quantity + cartItem.quantity, 0)
   }
@@ -18,16 +19,16 @@ const HeaderAdmin = () => {
   return (
     <HeaderWrapper>
       <Container>
-        <Link to={routes.HOME}>
+        <Link to="/admin">
           <Logo>OK Store</Logo>
         </Link>
         <Navbar>
-            <NavbarLink to={routes.PRODUCTS}>Products</NavbarLink>
-            <NavbarLink to={routes.LOGIN}>Login</NavbarLink>
-        <ButtonContainer onClick={() => dispatch(openCart())}>
-            <Button content={<FaShoppingCart />} shape="round" />
-            {sumQuantity() > 0 ? <Quantity>{sumQuantity()}</Quantity> : ''}
-        </ButtonContainer>
+            <NavbarLink to="/admin/rekapPenjualan">Rekap penjualan</NavbarLink>
+            {isLogin ? (
+              <NavbarLink onClick={()=>logoutAdmin()}>Logout</NavbarLink>
+            ):(
+              <NavbarLink to="/login">Login</NavbarLink>
+            )}
         </Navbar>
       </Container>
     </HeaderWrapper>

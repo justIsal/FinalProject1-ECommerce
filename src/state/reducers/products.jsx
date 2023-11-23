@@ -8,7 +8,8 @@ const productsReducer = (state = INIT_STATE, action) => {
       return [...action.payload]
     case UPDATE_PRODUCT:
       const storedProducts = JSON.parse(localStorage.getItem('products')) || [];
-      const payload = action.payload.map(item => item.id); // Array ID dari payload
+      
+      const payload = action.payload.map(item => item.id); 
       const data = storedProducts.products; 
       const updatedProducts = data.map(product => {
         if (payload.includes(product.id)) {
@@ -17,11 +18,21 @@ const productsReducer = (state = INIT_STATE, action) => {
         }
         return product;
       });
+
+      const dataSoldFromStorage = storedProducts.soldOut;
+      let newDataSold = []
+      if(dataSoldFromStorage.length > 0) {
+        newDataSold = [...dataSoldFromStorage,...action.payload];
+      }else{
+        newDataSold = action.payload;
+      }
+      
       localStorage.setItem('products', JSON.stringify({
         "isCartOpen": false,
         "products": updatedProducts,
-        "cart": []
-      })); 
+        "cart": [],
+        "soldOut": newDataSold
+      }))
     default:
       return state
   }

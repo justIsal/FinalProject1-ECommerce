@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { useSelector, useDispatch } from 'react-redux'
 import Button from '../elements/Button'
 import CardItemCard from './CartItemCard'
-import { closeCart, updateProducts} from '../../state/actions'
+import { addToSoldOut, closeCart, updateProducts} from '../../state/actions'
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart)
@@ -20,9 +20,12 @@ const Cart = () => {
   }
   const checkout = ()=> {
     const newCart = cart.map((item)=> {
-      return {id: item.id, stock: item.stock - item.quantity}
+      return {...item, stock: item.stock - item.quantity}
     });
+
+    dispatch(addToSoldOut(newCart))
     dispatch(updateProducts(newCart));
+    window.alert('checkout berhasil')
     window.location.reload()
   }
   const cartItems = cart.map((cartItem) => (

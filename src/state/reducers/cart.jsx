@@ -9,11 +9,13 @@ const cartReducer = (state = INIT_STATE, action) => {
         (cartItem) => cartItem.id === action.payload.id
       )
       return isInCart
-        ? state.map((cartItem) =>
-            cartItem.id === action.payload.id
-              ? { ...cartItem, quantity: cartItem.quantity + 1 }
-              : cartItem
-          )
+        ? state.map((cartItem) =>{
+          if(cartItem.id === action.payload.id){
+            return { ...cartItem, quantity: cartItem.quantity + 1 }
+          }else{
+            return cartItem
+          }
+        })
         : [...state, { ...action.payload, quantity: 1 }]
     case REMOVE_FROM_CART:
       const cartItemToRemove = state.find(

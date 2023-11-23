@@ -41,14 +41,14 @@ const CardItemCard = ({ id, title, price, image, quantity,stock }) => {
             animation="color"
           ></Button>
 
-          <div>{cartItem.quantity > 20 ? 20 : cartItem.quantity}</div>
+          <div>{cartItem.quantity > cartItem.stock ? "memenuhi stock" : cartItem.quantity}</div>
           <Button
-            onClick={() => cartItem.quantity >= 20 ? null : dispatch(addToCart(product))}
+            onClick={() => cartItem.quantity >= cartItem.stock ? null : dispatch(addToCart(product))}
             content={<FaPlus />}
             color="grey"
             animation="color"
           ></Button>
-          <p style={cartItem.quantity >= 20 ? {color: 'red'}: null}>{"stock : "+cekStock()}</p>
+          <p style={cartItem.quantity >= cartItem.stock ? {color: 'red'}: null}>{"stock : "+cekStock()}</p>
         </AmountChanger>
       </Details>
     </CartItemCardWrapper>

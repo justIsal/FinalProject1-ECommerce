@@ -23,7 +23,8 @@ const initializeStore = async()=> {
     localStorage.setItem('products', JSON.stringify({
       "isCartOpen": false,
       "products": quantity,
-      "cart": []
+      "cart": [],
+      "soldOut":[]
     })); 
 
     console.log('masuk set item')

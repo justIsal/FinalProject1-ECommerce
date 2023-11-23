@@ -1,6 +1,6 @@
 // Login.jsx
 import React, { useState } from "react";
-import { authenticate } from "./Auth";
+import { authenticate,authenticateAdmin } from "./Auth";
 import { useNavigate } from "react-router-dom";
 import "./styles.css"; // Mengimport file stylesheet
 
@@ -13,8 +13,7 @@ const Login = () => {
 
   const handleLogin = async () => {
     const isAuthenticated = await authenticate(value);
-    if (isAuthenticated) return navigate('/');
-    alert("Username atau password salah. Silakan coba lagi.");
+    if(!isAuthenticated) alert("Username atau password salah. Silakan coba lagi.");
   };
 
   return (

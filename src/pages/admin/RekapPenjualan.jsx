@@ -1,6 +1,13 @@
+
+import Table from "../../components/Tables/TableRekap";
+import HeaderAdmin from "../../components/HeaderAdmin"
+
 const RekapPenjualan = ()=> {
     return(
-        <>rekap penjualan</>
+        <>
+            <HeaderAdmin />
+            <Table/>
+        </>
     )
 }
 export default RekapPenjualan
